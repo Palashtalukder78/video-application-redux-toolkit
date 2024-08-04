@@ -3,6 +3,7 @@ import videosReducer from "../features/videos/videosSlice";
 import videoReducer from "../features/video/videoSlice";
 import tagsReducer from "../features/tags/tagsSlice";
 import filterReducer from "../features/filter/filterSlice";
+import relatedVideosReducer from "../features/relatedVideos/relatedVideosSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     video: videoReducer,
     tags: tagsReducer,
     filter: filterReducer,
+    relatedVideos: relatedVideosReducer,
   },
 });
 export default store;
