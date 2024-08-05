@@ -9,9 +9,12 @@ const VideoGrid = () => {
   const { videos, isLoading, isError, error } = useSelector(
     (state) => state.videos
   );
+  // worked here when internet shut down
+  const {tags, search} = useSelector(state=> state.filter)
+
   useEffect(() => {
-    dispatch(fetchVideos());
-  }, [dispatch]);
+    dispatch(fetchVideos({tags, search}));
+  }, [dispatch, tags, search]);
 
   let content ;
   if (isLoading) content = <Loading />;

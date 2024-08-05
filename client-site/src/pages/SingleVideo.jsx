@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 const SingleVideo = () => {
   const dispatch = useDispatch();
   const { video } = useSelector((state) => state.video);
-
   const {videoId} = useParams();
 
   useEffect(() => {

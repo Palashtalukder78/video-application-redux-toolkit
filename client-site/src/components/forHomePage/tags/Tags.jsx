@@ -10,8 +10,8 @@ const Tags = () => {
   useEffect(()=>{
     dispatch(fetchTags())
   },[dispatch])
-  let content = null;
-
+  
+  let content ;
   if(tags?.length > 0){
     content = tags.map(tag=> <Tag key={tag.id} title={tag.title}/>)
   }else{

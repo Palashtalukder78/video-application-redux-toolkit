@@ -7,11 +7,13 @@ const initialState = {
   isError: false,
   error: "",
 };
-export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
-  const videos = await getVideos();
-  return videos;
-});
-
+export const fetchVideos = createAsyncThunk(
+  "videos/fetchVideos",
+  async ({ tags, search }) => {
+    const videos = await getVideos(tags, search);
+    return videos;
+  }
+);
 const videosSlice = createSlice({
   name: "videos",
   initialState,
@@ -22,9 +24,8 @@ const videosSlice = createSlice({
         state.isError = false;
       })
       .addCase(fetchVideos.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.isError = false;
-          state.videos = action.payload;
+        state.isLoading = false;
+        state.videos = action.payload;
       })
       .addCase(fetchVideos.rejected, (state, action) => {
         state.isLoading = false;

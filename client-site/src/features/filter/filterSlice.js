@@ -4,7 +4,6 @@ const initialState = {
   tags: [],
   search: "",
 };
-
 const filterSlice = createSlice({
   name: "filter",
   initialState,
@@ -13,9 +12,9 @@ const filterSlice = createSlice({
         state.tags.push(action.payload)
     },
     tagRemoved : (state,action)=>{
-        const indexToRemoved = state.tags.indexOf(action.payload);
-        if(indexToRemoved !== 1){
-            state.tags.splice(indexToRemoved, 1)
+        const indexToRemove = state.tags.indexOf(action.payload);
+        if(indexToRemove !== -1){
+            state.tags.splice(indexToRemove, 1)
         }
     },
     searched : (state, action)=>{
@@ -23,6 +22,5 @@ const filterSlice = createSlice({
     }
   }
 });
-
 export default filterSlice.reducer;
 export const {tagSelected, tagRemoved, searched} = filterSlice.actions;
